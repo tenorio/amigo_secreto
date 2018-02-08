@@ -1,10 +1,13 @@
 class Campaign < ApplicationRecord
-  before_create :set_status
-  before_create :set_member
+  before_validation :set_member, on: :create
+  before_validation :set_status, on: :create
+
   belongs_to :user
-  enum status: [:pending, :finished]
   has_many :members, dependent: :destroy
+  enum status: [:pending, :finished]
   validates :title, :description, :user, :status, presence: true
+
+  private
 
   def set_status
     self.status = :pending
