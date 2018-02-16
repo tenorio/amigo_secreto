@@ -7,11 +7,13 @@ end
 
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
+gem 'inky-rb', require: 'inky'
 gem 'jbuilder',     '~> 2.5'
 gem 'jquery-rails'
 gem 'material_icons'
 gem 'materialize-sass'
 gem 'pg',           '~> 0.18'
+gem 'premailer-rails'
 gem 'puma',         '~> 3.0'
 gem 'rails',        '~> 5.0.1'
 gem 'redis'
