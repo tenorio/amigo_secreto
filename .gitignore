@@ -22,3 +22,5 @@
 # Ignore images
 /app/assets/images/*
 
+# Ignore production credentials file
+.env-prod
