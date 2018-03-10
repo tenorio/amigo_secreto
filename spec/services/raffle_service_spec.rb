@@ -9,16 +9,17 @@ describe RaffleService do
   describe '#call' do
     context "when has more than two members" do
       before(:each) do
-        create(:member, campaign: @campaign)
-        create(:member, campaign: @campaign)
-        create(:member, campaign: @campaign)
+        3.times { create(:member, campaign: @campaign) }
         @campaign.reload
-
         @results = RaffleService.new(@campaign).call
       end
 
       it "results is a hash" do
         expect(@results.class).to eq(Hash)
+      end
+
+      it "Hash can't be empty" do
+        expect(@results).not_to be_empty
       end
 
       it "all members are in results as a member" do
@@ -38,7 +39,18 @@ describe RaffleService do
       end
 
       it "a member x don't get a member y that get the member x" do
-        # Desafio
+        # byebug
+        @results.each do |x|
+          member_x = x.first
+          member_y = x.last
+
+          @results.each do |y|
+            if y.first == member_y
+              expect(y.last).not_to eql(member_x)
+              break
+            end
+          end
+        end
       end
 
     end

@@ -24,3 +24,6 @@
 
 # Ignore production credentials file
 .env-prod
+
+# Ignore precompiled assets
+/public/assets/*

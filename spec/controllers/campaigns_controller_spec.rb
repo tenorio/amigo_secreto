@@ -60,8 +60,15 @@ RSpec.describe CampaignsController, type: :controller do
 
     it "Create campaign with right attributes" do
       expect(Campaign.last.user).to eql(@current_user)
-      expect(Campaign.last.title).to eql(@campaign_attributes[:title])
-      expect(Campaign.last.description).to eql(@campaign_attributes[:description])
+
+      # O campo 'título' está sendo definido manualmente no controller.
+      # expect(Campaign.last.title).to eql(@campaign_attributes[:title])
+      expect(Campaign.last.title).to eql('Nova Campanha')
+
+      # O campo 'description' está sendo definido manualmente no controller.
+      # expect(Campaign.last.description).to eql(@campaign_attributes[:description])
+      expect(Campaign.last.description).to eql('Descreva sua campanha...')
+
       expect(Campaign.last.status).to eql('pending')
     end
 
